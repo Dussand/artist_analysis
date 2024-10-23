@@ -4,9 +4,6 @@ from spotipy.oauth2 import SpotifyOAuth
 import pandas as pd
 
 
-#definimos credenciales
-
-
 client_id = 'b6841f7c97974c8aacbdf448dae8677f'
 client_secret = 'bc15cade85bc41f88d451fbb2c832eff'
 redirect_uri = 'http://localhost:8888/callback/'
@@ -45,8 +42,6 @@ else:
 
     artist_info = sp.artist(artist_id)
     followers_count = artist_info['followers']['total']  # Número de seguidores
-
-
     
     #lista para almaceenar todas las canciones y albumes
     all_songs = []
@@ -70,7 +65,9 @@ else:
                 }
             )
 
-albums = pd.DataFrame(all_songs)
 
-if not artist == '':
-    st.dataframe(albums)
+    
+    albums = pd.DataFrame(all_songs)
+
+    if not artist == '':
+        st.dataframe(albums)
